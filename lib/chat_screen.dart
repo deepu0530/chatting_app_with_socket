@@ -51,12 +51,13 @@ class _ChattingScreenState extends State<ChattingScreen> {
         title: Text("Crazy Chat"),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 20),
+        padding: const EdgeInsets.only(left: 15,right: 15,bottom: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 10,top: 20),
                 itemCount: messages.length,
                 // itemCount: 4,
                 separatorBuilder: (BuildContext context, int index) =>
@@ -79,8 +80,8 @@ class _ChattingScreenState extends State<ChattingScreen> {
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.circular(20),
                             color: messages[index]["username"] == widget.name
-                                ? Colors.purple.withOpacity(0.8)
-                                : Colors.purple,
+                                ? Colors.purple[300]
+                                : Colors.purple[400],
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +91,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
-                                    color: Colors.grey[300]),
+                                    color: Colors.grey[200]),
                               ),
                               SizedBox(height: 10,),
                               Text(
@@ -108,14 +109,16 @@ class _ChattingScreenState extends State<ChattingScreen> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(right: 65, bottom: 0,),
+              margin: const EdgeInsets.only(right: 65, bottom: 0,top: 10),
               padding: EdgeInsets.only(left: 15),
 
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(35),
                 color: Colors.purple,
+              
               ),
               child: TextField(
+              
                 controller: _controller,
                 style: TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
@@ -130,8 +133,9 @@ class _ChattingScreenState extends State<ChattingScreen> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.only(bottom: 0,top: 10),
         child: FloatingActionButton(
+          
           child: Icon(Icons.send),
           onPressed: sendData,
         ),
